@@ -1,6 +1,6 @@
-# flutter_drive
+# FlutterPatterns
 
-A new Flutter project.
+Generic and reusable tools with trendy Design Patterns.
 
 ## Getting Started
 
