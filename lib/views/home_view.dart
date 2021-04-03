@@ -1,43 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_drive/services/generic_service.dart';
+import 'package:flutter_drive/models/card_model.dart';
+import 'package:flutter_drive/widgets/button_widget.dart';
 import 'package:flutter_drive/widgets/card_widget.dart';
 import 'package:flutter_drive/widgets/navbar_widget.dart';
-
-// class CardI {
-//   String title, details;
-//   Duration dur;
-//   List<String> tags;
-//   CardI(this.title, this.details, this.dur, this.tags);
-// }
+import 'package:flutter_drive/widgets/text_widget.dart';
 
 class HomeView extends StatelessWidget {
+  final cardA = new CardI("Card A", "Primera tarjeta genérica.");
+  final cardB = new CardI("Card B", "Segunda tarjeta genérica.");
+  final lorem =
+      "Lo-fi tattooed four dollar toast trust fund. Umami VHS salvia normcore, affogato green juice pabst twee pitchfork vexillologist fam tacos. Vice disrupt subway tile chambray, squid pop-up semiotics. Single-origin coffee flannel lomo seitan, taiyaki pour-over photo booth pug roof party gastropub cloud bread YOLO four loko pitchfork.";
   @override
   Widget build(BuildContext context) {
-    // final scheduleCard = ToDoCard();
     return Scaffold(
         appBar: myAppBar('ToDos'),
-        body: Container(
-          padding: EdgeInsets.all(10),
+        body: SafeArea(
           child: Column(
-            // children: toDo1,
-            children: [Center(child: CardWidget())],
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [TextWidget('ToDos', lorem), CardWidget()],
           ),
         ),
-        floatingActionButton: BottomAppBar(
-          color: Colors.transparent,
-          elevation: 0,
-          child: Row(children: [
-            ElevatedButton(
-                child: Text('Card A'),
-                onPressed: () => cardService.create(
-                    (x) => new CardI("Card A", "Primera tarjeta genérica."))),
-            ElevatedButton(
-                child: Text('Card B'),
-                onPressed: () => cardService.create(
-                    (x) => new CardI("Card B", "Segunda tarjeta genérica."))),
-            ElevatedButton(
-                child: Text('Delete'), onPressed: () => cardService.delete())
-          ]),
-        ));
+        backgroundColor: Colors.grey[100],
+        persistentFooterButtons: [
+          ButtonWidget("Card A",
+              action: () => cardService.create((x) => cardA)),
+          ButtonWidget('Card B',
+              action: () => cardService.create((x) => cardB)),
+          ButtonWidget('Delete', action: () => cardService.delete())
+        ]);
   }
 }

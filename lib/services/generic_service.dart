@@ -1,12 +1,15 @@
 import 'package:rxdart/rxdart.dart';
 
-class CardI {
-  String title, details;
-  CardI(this.title, this.details);
+enum HttpType { GET, LIST, POST, PUT, UPDATE, DELETE }
+
+class HttpProtocol {
+  final type;
+  HttpProtocol(this.type);
 }
 
 class GenericService<T> {
-  final _generic = BehaviorSubject<T>.seeded(null);
+  final BehaviorSubject<T> _generic;
+  GenericService(this._generic);
   Stream get stream$ => _generic.stream;
   T get current => _generic.value;
 
@@ -18,6 +21,3 @@ class GenericService<T> {
     _generic.add(null);
   }
 }
-
-final integerService = GenericService<int>();
-final cardService = GenericService<CardI>();
