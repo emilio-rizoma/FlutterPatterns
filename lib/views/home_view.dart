@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_drive/models/card_model.dart';
+import 'package:flutter_drive/services/card_service.dart';
 import 'package:flutter_drive/widgets/button_widget.dart';
 import 'package:flutter_drive/widgets/card_widget.dart';
 import 'package:flutter_drive/widgets/navbar_widget.dart';
@@ -23,9 +24,9 @@ class HomeView extends StatelessWidget {
         backgroundColor: Colors.grey[100],
         persistentFooterButtons: [
           ButtonWidget("Card A",
-              action: () => cardService.create((x) => cardA)),
+              action: () => cardService.update((x) => cardA)),
           ButtonWidget('Card B',
-              action: () => cardService.create((x) => cardB)),
+              action: () => cardService.update((x) => cardB)),
           ButtonWidget('Delete', action: () => cardService.delete())
         ]);
   }

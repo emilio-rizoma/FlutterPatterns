@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_drive/models/card_model.dart';
+import 'package:flutter_drive/services/card_service.dart';
 
 class CardWidget extends StatelessWidget {
   @override
